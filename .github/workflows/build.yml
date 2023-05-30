@@ -6,6 +6,8 @@ name: Build Random Quotes
       - main
       - 'feature/**'
       - 'bugfix/**' 
+env:  
+  OCTOPUS_PROJECT_NAME: Random Quotes UI
 
 jobs:
   build:
@@ -87,6 +89,7 @@ jobs:
         OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_TOKEN }}
         OCTOPUS_HOST: ${{ secrets.OCTOPUS_SERVER_URL }}
       with:
+        project: ${{ env.OCTOPUS_PROJECT_NAME }}
         packages: randomquotes.${{ steps.determine_version.outputs.semVer }}.zip
         overwrite_mode: OverwriteExisting
     
