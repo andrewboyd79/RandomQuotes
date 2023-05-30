@@ -7,8 +7,10 @@ name: Build Random Quotes
       - 'feature/**'
       - 'bugfix/**' 
 env:  
-  OCTOPUS_PROJECT_NAME: Random Quotes UI
-  OCTOPUS_SPACE: Random Quotes Demo
+  OCTOPUS_PROJECT_NAME: ${{ secrets.OCTOPUS_PROJECT_NAME }}
+  OCTOPUS_SPACE: ${{ secrets.OCTOPUS_SPACE }}
+  OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_TOKEN }}
+  OCTOPUS_HOST: ${{ secrets.OCTOPUS_SERVER_URL }}
 
 jobs:
   build:
@@ -86,9 +88,6 @@ jobs:
       
     - name: Push packages to Octopus Deploy
       uses: OctopusDeploy/push-package-action@v2
-      env:
-        OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_TOKEN }}
-        OCTOPUS_HOST: ${{ secrets.OCTOPUS_SERVER_URL }}
       with:
         project: ${{ env.OCTOPUS_PROJECT_NAME }}
         packages: randomquotes.${{ steps.determine_version.outputs.semVer }}.zip
