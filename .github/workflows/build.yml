@@ -65,8 +65,8 @@ jobs:
         octo pack \
          --basePath ${SOURCEPATH} \
          --outFolder ${OUTPUTPATH} \
-         --id randomquotes \
-         --version ${{ steps.determine_version.outputs.semVer }} \
+         --id ${{ env.OCTOPUS_PROJECT_NAME }}_pkg \
+         --version $versionNumber = "0.${env:GITHUB_RUN_NUMBER}" \
          --format zip \
          --overwrite \
          --include '**/*.html' \
