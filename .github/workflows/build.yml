@@ -8,6 +8,7 @@ name: Build Random Quotes
       - 'bugfix/**' 
 env:  
   OCTOPUS_PROJECT_NAME: Random Quotes UI
+  OCTOPUS_SPACE: Random Quotes Demo
 
 jobs:
   build:
