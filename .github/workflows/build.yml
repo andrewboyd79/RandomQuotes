@@ -65,7 +65,7 @@ jobs:
         octo pack \
          --basePath ${SOURCEPATH} \
          --outFolder ${OUTPUTPATH} \
-         --id randomquotes \
+         --id Random Quotes UI \
          --version ${{ steps.determine_version.outputs.semVer }} \
          --format zip \
          --overwrite \
